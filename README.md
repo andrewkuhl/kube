@@ -10,7 +10,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#what-is-this?">What is this?</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -31,7 +31,9 @@
   </ol>
 </details>
 
+## What is this?
 
+When I started on this I had no idea what kubernetes was or what I was getting myself into.
 
 
 <!-- GETTING STARTED -->
