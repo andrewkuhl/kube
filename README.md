@@ -85,11 +85,11 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 
 <!-- LICENSE -->
-## License
+### License
 
-Distributed under the MIT License. See [![MIT License][license-shield]][license-url] for more information.
+Andrew Kuhl 2022 Distributed under the MIT License.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">top</a></p>
 
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
