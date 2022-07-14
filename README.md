@@ -9,27 +9,23 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li><a href="#what-is-this">What is this?</a></li>
     <li>
-      <a href="#what-is-this?">What is this?</a>
+      <a href="#what-you-need">What you need</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#what-i-use">What I ended up using</a></li>
+        <ul>
+          <li><a href="#computers">Computers</a></li>
+          <li><a href="#storage">Storage</a></li>
+          <li><a href="#networking">Networking</a></li>
+          <li><a href="#misc">Misc.</a></li>
+        </ul>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+
+<div id="what-is-this"></div>
 
 ## What is this?
 I am creating a local cloud infastructure using raspberry pi's and other computers in my house.
@@ -38,62 +34,35 @@ It's really a complex subject and I won't really go into it because I don't full
 I have a couple raspberry pi's and computers and kubernetes is a way to orchestrate everything into
 a mass of CPU and RAM to run containerized applications.
 
-<!-- GETTING STARTED -->
-## Getting Started
+<div id="what-you-need"></div>
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## What you need
 
-### Prerequisites
+You really only need one computer, or raspberry pi, or whatever. The whole point of kubernetes is 
+that its very modular, which means extra computers can be added on as you get them. I added a lot of extra stuff for fun and to expirement. 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+<div id="what-i-use"></div>
 
-### Installation
+### What I ended up using
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- **Computers** <div id="computers"></div>
+&nbsp; &nbsp;[Raspberry Pi 4 4GB](https://www.amazon.com/dp/B07TC2BK1X?psc=1&ref=ppx_yo2ov_dt_b_product_details) (two of them) <br>
+&nbsp; &nbsp;[Seed Studio Raspberry Pi 4 8GB](https://www.amazon.com/dp/B0899VXM8F?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
+&nbsp; &nbsp;[Beelink GK35 Mini PC](https://www.amazon.com/dp/B09FDGT449?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
+- **Storage** <div id="storage"></div> 
+&nbsp; &nbsp;[M.2 to USB3.0 Adapter](https://www.amazon.com/gp/product/B09GY7J6V8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) <br>
+&nbsp; &nbsp;[WD Black 1TB NVMe M.2](https://www.amazon.com/WD_BLACK-SN770-Internal-Gaming-Solid/dp/B09QV692XY/ref=sr_1_5?crid=2WGR16TMUOV5I&keywords=black+1tb&qid=1657835177&sprefix=black+1tb%2Caps%2C117&sr=8-5) <br>
+&nbsp; &nbsp;[WD Passport 2TB external HDD](https://www.amazon.com/Passport-Portable-External-Drive-Black/dp/B07VTFN6HM/ref=sr_1_3?crid=1ZJLVHBAVL1J3&keywords=passport+2tb&qid=1657835063&sprefix=passport+2%2Caps%2C125&sr=8-3) <br>
+- **Networking** <div id="networking"></div>
+&nbsp; &nbsp;[Gigabit Ethernet Cables](https://www.amazon.com/iMBAPrice-Snagless-Ethernet-Patch-Inches/dp/B01MR94NJY/ref=sr_1_3?crid=1KZA4Y44EIJ6V&keywords=iMBAPrice%2BCat6%2BSnagless%2BEthernet%2BPatch%2BCable%2Bin%2BWhite%2B0.5%2BFeet%2B(6%2BInches)%2B-%2B10%2BPack&qid=1657834427&s=electronics&sprefix=imbaprice%2Bcat6%2Bsnagless%2Bethernet%2Bpatch%2Bcable%2Bin%2Bwhite%2B0.5%2Bfeet%2B6%2Binches%2B-%2B10%2Bpack%2Celectronics%2C123&sr=1-3&th=1) <br>
+&nbsp; &nbsp;[POE Hats](https://www.amazon.com/UCTRONICS-Raspberry-Power-Ethernet-Expansion/dp/B082ZLDMZ6/ref=sr_1_3?crid=E6357EKWA2A9&keywords=rpi+poe+hat&qid=1657834524&sprefix=rpi+poe+hat%2Caps%2C109&sr=8-3) (three of them) <br>
+&nbsp; &nbsp;[Gigabit POE Switch](https://www.amazon.com/STEAMEMO-Gigabit-Ethernet-Unmanaged-Wall-Mount/dp/B08TFY4G1C/ref=sr_1_3?crid=2CZYB9IVVDKZB&keywords=STEAMEMO+5+Port+Gigabit+Ethernet&qid=1657834622&s=electronics&sprefix=steamemo+5+port+gigabit+ethernet%2Celectronics%2C104&sr=1-3) <br>
+&nbsp; &nbsp;[Old Linksys Router](https://www.amazon.com/Linksys-Wireless-Dual-Band-Anywhere-EA6200/dp/B00DLYD31A/ref=sr_1_18?crid=3U640ST4RB3UV&keywords=linksys+smart+wi-fi+router&qid=1657835886&sprefix=linksys+smart+%2Caps%2C138&sr=8-18) <br>
+- **Misc.** <div id="misc"></div>
+&nbsp; &nbsp;[Raspberry Pi Cluster Case](https://www.amazon.com/dp/B07MW24S61?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
+&nbsp; &nbsp;[Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
 
 
-<!-- LICENSE -->
-### License
-
-Andrew Kuhl 2022 Distributed under the MIT License.
-
-<p align="right"><a href="#top">top</a></p>
 
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
