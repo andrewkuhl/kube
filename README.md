@@ -32,9 +32,11 @@
 </details>
 
 ## What is this?
-
+I am creating a local cloud infastructure using raspberry pi's and other computers in my house.
 When I started on this I had no idea what kubernetes was or what I was getting myself into.
-
+It's really a complex subject and I won't really go into it because I don't fully understand it,
+I have a couple raspberry pi's and computers and kubernetes is a way to orchestrate everything into
+a mass of CPU and RAM to run containerized applications.
 
 <!-- GETTING STARTED -->
 ## Getting Started
