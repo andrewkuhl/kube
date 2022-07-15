@@ -53,7 +53,7 @@ that its very modular, which means extra computers can be added on as you get th
 &nbsp; &nbsp;[Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
 
 Everything is so expensive now I bought everything throughout 3 or 4 months, whenever I could find a [Raspberry Pi](https://www.amazon.com/dp/B07TC2BK1X?psc=1&ref=ppx_yo2ov_dt_b_product_details) at a good deal. I bought the [Mini PC](https://www.amazon.com/dp/B09FDGT449?psc=1&ref=ppx_yo2ov_dt_b_product_details)  to add some power to the cluster and to add a non ARM processor because some containers have issues with the Raspberry Pi CPU. I bought the [Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) to monitor energy usage and make sure I wasn't bankrupting myself. The [Old Linksys Router](https://www.amazon.com/Linksys-Wireless-Dual-Band-Anywhere-EA6200/dp/B00DLYD31A/ref=sr_1_18?crid=3U640ST4RB3UV&keywords=linksys+smart+wi-fi+router&qid=1657835886&sprefix=linksys+smart+%2Caps%2C138&sr=8-18) I dug out of my closet so you really can use anything, I was hoping to use it as a nas but I'm having a hard time connecting it to the Raspberry Pi's
-<p align="right"><a href="#top">top</a></p>
+
 <!-- GETTING STARTED -->
 ## Getting Started <div id="setup"></div>
 
