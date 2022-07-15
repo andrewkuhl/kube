@@ -224,6 +224,8 @@ At this point you could install kubernetes on node1 and kubernetes client on the
 However I will be installing ubuntu desktop on the minipc for the added amd core and better kube master.
 The goal from here is to install a nas on node1 to which I will access from all the nodes and my pc. I also want to figure out a vpn to access the network from far away
 
+Setting up the MiniPC has been a little different. Manual installation, no /etc/cloud folder?
+
 ## Sources <div id="sources"></div>
 1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
 2. [How to Disable IPv6 on Ubuntu](https://pimylifeup.com/ubuntu-disable-ipv6/)
