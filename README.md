@@ -25,26 +25,16 @@
   </ol>
 </details>
 
-<div id="what-is-this"></div>
-
-## What is this?
+## What is this? <div id="what-is-this"></div>
 I am creating a local cloud infastructure using raspberry pi's and other computers in my house.
 When I started on this I had no idea what kubernetes was or what I was getting myself into.
 It's really a complex subject and I won't really go into it because I don't fully understand it,
 I have a couple raspberry pi's and computers and kubernetes is a way to orchestrate everything into
 a mass of CPU and RAM to run containerized applications.
-
-<div id="what-you-need"></div>
-
-## What you need
-
+## What you need <div id="what-you-need"></div>
 You really only need one computer, or Raspberry Pi, or whatever. The whole point of kubernetes is 
 that its very modular, which means extra computers can be added on as you get them. I added a lot of extra stuff for fun and to expirement. 
-
-<div id="what-i-use"></div>
-
-### What I ended up using
-
+### What I ended up using <div id="what-i-use"></div>
 - **Computers** <div id="computers"></div>
 &nbsp; &nbsp;[Raspberry Pi 4 4GB](https://www.amazon.com/dp/B07TC2BK1X?psc=1&ref=ppx_yo2ov_dt_b_product_details) (two of them) <br>
 &nbsp; &nbsp;[Seed Studio Raspberry Pi 4 8GB](https://www.amazon.com/dp/B0899VXM8F?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
@@ -62,7 +52,168 @@ that its very modular, which means extra computers can be added on as you get th
 &nbsp; &nbsp;[Raspberry Pi Cluster Case](https://www.amazon.com/dp/B07MW24S61?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
 &nbsp; &nbsp;[Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) <br>
 
-Everything is so expensive now I bought everything throughout 3 or 4 months, whenever I could find a [Raspberry Pi](https://www.amazon.com/dp/B07TC2BK1X?psc=1&ref=ppx_yo2ov_dt_b_product_details) at a good deal. I bought the [Mini PC](https://www.amazon.com/dp/B09FDGT449?psc=1&ref=ppx_yo2ov_dt_b_product_details)  to add some power to the cluster and to add a non ARM processor because some containers have issues with the Raspberry Pi CPU. I bought the [Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) to monitor energy usage and make sure I wasn't bankrupting myself. The [Old Linksys Router](https://www.amazon.com/Linksys-Wireless-Dual-Band-Anywhere-EA6200/dp/B00DLYD31A/ref=sr_1_18?crid=3U640ST4RB3UV&keywords=linksys+smart+wi-fi+router&qid=1657835886&sprefix=linksys+smart+%2Caps%2C138&sr=8-18) I dug out of my closet so you really can use anything. I was hoping to use it as a nas but I'm having a hard time connecting it to the Raspberry Pi's
+Everything is so expensive now I bought everything throughout 3 or 4 months, whenever I could find a [Raspberry Pi](https://www.amazon.com/dp/B07TC2BK1X?psc=1&ref=ppx_yo2ov_dt_b_product_details) at a good deal. I bought the [Mini PC](https://www.amazon.com/dp/B09FDGT449?psc=1&ref=ppx_yo2ov_dt_b_product_details)  to add some power to the cluster and to add a non ARM processor because some containers have issues with the Raspberry Pi CPU. I bought the [Smart Plug](https://www.amazon.com/dp/B09QFLJH8T?psc=1&ref=ppx_yo2ov_dt_b_product_details) to monitor energy usage and make sure I wasn't bankrupting myself. The [Old Linksys Router](https://www.amazon.com/Linksys-Wireless-Dual-Band-Anywhere-EA6200/dp/B00DLYD31A/ref=sr_1_18?crid=3U640ST4RB3UV&keywords=linksys+smart+wi-fi+router&qid=1657835886&sprefix=linksys+smart+%2Caps%2C138&sr=8-18) I dug out of my closet so you really can use anything, I was hoping to use it as a nas but I'm having a hard time connecting it to the Raspberry Pi's
+<p align="right"><a href="#top">top</a></p>
+<!-- GETTING STARTED -->
+## Getting Started <div id="setup"></div>
+
+### setting up the network <div id="setup-network"></div>
+
+The first step for me was to set up the router and internet connection for my cluster. ```you can skip this```
+- I ran an ethernet cable from my home router to my new linksys router and plugged a power cable into it. 
+- waited for the wifi network to come up and joined it.
+- once I was on the network I checked my ip which was ```192.168.1.108```. 
+- opened chrome and typed in the IP address for the router ```192.168.1.1```.
+- configured network and changed IP address to ```10.3.5.1/24```.
+- in the DHCP settings for the network I started the IP addresses for the network at ```10.3.5.9``` for personal choice, but I limited the amount of users on the network to ```91```. Since the networks netmask is ```/24```, or ```255.255.255.0```, that means we could have up to 255 IP addresses, including the router.  I limited the ammount of IP addresses for DHCP to handout, because later I am going to set up a load balancer for my cluster that will deploy services for applications on the rest of the IP's.
+
+## setting up the nodes <div id="setup-network"></div>
+I set up one node initially on a small 10GB drive and then I used it to make a disk image, which I used to flash all the other nodes
+
+In order to flash a Raspberry Pi, I like to use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/). I know on the site it says it's for the Pi OS but it has ubuntu built in which is perfect for us.
+
+### On Raspberry Pi Imager
+- select Ubuntu Server 20.04 64 bit
+- select the disk you want to flash
+- press ```ctrl+shift+x ``` for extra settings to pop up
+- I change the username to andy and password to an SSH key
+- flash the sd card
+- put sd card in Raspberry Pi and boot up
+
+Since I'm using my own local project router I can go into the new router address, ```10.3.5.1```, on google chrome and find the IP. If you dont have access to the router you can always use nmap to try and find it. 
+  
+I use Visual Studio Code for SSH. Its really simple and nice to use. I installed an ssh extension which allowed me to change my ssh configuration as needed.
+
+<p align="right"><a href="#top">top</a></p>
+### On Visual Studio Code
+**connecting to node**
+I click the bottom left blue corner to ssh to a connection, or in this case we need to edit the configuration file.
+```sh
+# ~/.ssh/config
+Host node #name used for ssh
+hostname 10.3.5.35 #ip address of node
+user andy #username for login
+identityfile ~/.ssh/node #location of ssh key
+```
+once my configuration for the new node is added I go back to the blue button and connect to ```node```
+
+you should see a bunch of updates available for you to install. nice.
+
+```sh
+sudo apt update #updating repositories
+sudo reboot #it makes me reboot here usually
+sudo apt upgrade -y #installing updates
+sudo apt autoremove -y #removing old packages
+sudo reboot #restart!
+```
+
+
+
+**configuring template node**
+some initial setup is necessary for the raspberry pi to be used for kubernetes, and as a server in general. this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> is a great resource to check through that I have been using. I have done some things differently though.
+
+In the case you dont have access to the router follow the tutorial in this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> for network setup
+- add ssh key to root user's ```~/.ssh/authorized_keys```
+  - I like to do this first so I can ssh to root in VSCode for file editing, however this is bad for security so maybe you shouldn't but its probably fine...
+- [disable IPv6](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>2</sup></a>
+
+- disable ssh by password if you didnt in the rpi imager ```/etc/ssh/sshd_config```
+- add to ```/boot/firmware/cmdline.txt```
+  copy and paste this to the begining of the file
+  ```cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory```
+- in the VSCode terminal 
+  ```sh
+  sudo apt install docker.io -y
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  sudo systemctl status docker
+  ```
+
+<p align="right"><a href="#top">top</a></p>
+
+**flashing new nodes**
+okay so now we should be good to go cluster-wise, im going to test this later on my new minipc so we will see.
+
+This is the point where I take the SD card out and open [Etcher](https://www.balena.io/etcher/) and plug the sd card into my computer. Etcher lets you fash an sd card from another sd card which is great for what we need. So I bought target brand 64GB sd cards for like \$10 or \$12 each, which probably wasnt necessary because I want to set up a nas for my cluster to use.
+- flash new sd card and plug into first node
+- find node on router website and ssh
+  ```sh
+  sudo hostnamectl set-hostname node#
+  hostname node#
+  ```
+- add each nodes future static IP address in ```/etc/cloud/templates/debian.hosts.tmpl``` or something
+  ```sh
+  127.0.0.1 node# localhost
+  
+  10.3.5.11 node1 # in my case
+  10.3.5.12 node2 
+  10.3.5.13 node3
+  ```
+- repeat for each node
+- set each node static ip on router website for permanent lookup
+
+
+**adding in-cluster routes**
+in node1 or whichever node has been designated the master node
+- copy config file and ssh keys to ```~/.ssh```
+- edit config file to add each node
+  ```sh
+  Host node1 #name used for ssh
+  hostname 10.3.5.11 #ip address of node
+  user andy #username for login
+  identityfile ~/.ssh/node #location of ssh key
+
+  Host node2 #name used for ssh
+  hostname 10.3.5.12 #ip address of node
+  user andy #username for login
+  identityfile ~/.ssh/node #location of ssh key
+
+  Host node3 #name used for ssh
+  hostname 10.3.5.13 #ip address of node
+  user andy #username for login
+  identityfile ~/.ssh/node #location of ssh key
+  ```
+- create new key to ssh to each node from master
+  ```sh
+  cd ~/.ssh
+  ssh-keygen -t rsa #i name it node
+  ssh-copy-id -i ~/.ssh/node.pub node#
+  ```
+- install ansible for fun and ease
+  ```sh
+  apt install ansible
+  ```
+- edit ```/etc/ansible/hosts```
+  ```sh
+  [control]
+  node1  ansible_connection=local
+
+  [workers]
+  node2 ansible_connection=ssh
+  node3 ansible_connection=ssh
+
+  [cube:children]
+  control
+  workers
+  ```
+- ping nodes with ansible
+  ```sh
+  ansible cube -m ping
+  ```
+<p align="right"><a href="#top">top</a></p>
+
+
+
+## Sources <div id="sources"></div>
+1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <div id="medium"></div>
+2. [How to Disable IPv6 on Ubuntu](https://pimylifeup.com/ubuntu-disable-ipv6/)
+   
+
+
+
+
+
+
 
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
