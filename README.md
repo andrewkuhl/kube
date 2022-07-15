@@ -84,7 +84,6 @@ Since I'm using my own local project router I can go into the new router address
   
 I use Visual Studio Code for SSH. Its really simple and nice to use. I installed an ssh extension which allowed me to change my ssh configuration as needed.
 
-<p align="right"><a href="#top">top</a></p>
 ### On Visual Studio Code
 **connecting to node**
 I click the bottom left blue corner to ssh to a connection, or in this case we need to edit the configuration file.
