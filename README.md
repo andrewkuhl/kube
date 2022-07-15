@@ -265,6 +265,7 @@ watch kubectl get nodes
 kubectl label nodes node1 node2 node3 kubernetes.io/role=worker
 kubectl get nodes
 ```
+https://michael-tissen.medium.com/setting-up-an-raspberrypi4-k3s-cluster-with-nfs-persistent-storage-a931ebb85737
 
 ## Sources <div id="sources"></div>
 1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
