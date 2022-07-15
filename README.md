@@ -225,6 +225,7 @@ However I will be installing ubuntu desktop on the minipc for the added amd core
 The goal from here is to install a nas on node1 to which I will access from all the nodes and my pc. I also want to figure out a vpn to access the network from far away
 
 Setting up the MiniPC has been a little different. Manual installation, no /etc/cloud folder?
+followed [this](https://linuxconfig.org/how-to-disable-ipv6-address-on-ubuntu-20-04-lts-focal-fossa#:~:text=Disabling%20IPv6%20address%20on%20Ubuntu%2020.04%20LTS%20Focal%20Fossa%20step%20by%20step%20instructions&text=In%20case%20you%20need%20to,run%20the%20update%2Dgrub%20command)
 
 ## Sources <div id="sources"></div>
 1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
