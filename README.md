@@ -22,6 +22,24 @@
         </ul>
       </ul>
     </li>
+    <li><a href="#getting-started">Getting Started</a></li>
+        <ul>
+          <li><a href="#setup-network">setting up the network</a></li>
+        </ul>
+    </li>
+    <li>
+      <a href="#setup-nodes">Setting up the nodes</a>
+      <ul>
+        <li><a href="#on-pi-imager">On Raspberry Pi Imager</a></li>
+        <li><a href="#on-vscode">On Visual Studio Code</a></li>
+        <ul>
+          <li><a href="#connecting-to-node">connecting to node</a></li>
+          <li><a href="#config-template-node">configuring template node</a></li>
+          <li><a href="#flashing-new-node">flashing new node</a></li>
+          <li><a href="#in-cluster-routes">adding in-cluster routes</a></li>
+        </ul>
+      </ul>
+    </li>
   </ol>
 </details>
 
@@ -67,12 +85,12 @@ The first step for me was to set up the router and internet connection for my cl
 - configured network and changed IP address to ```10.3.5.1/24```.
 - in the DHCP settings for the network I started the IP addresses for the network at ```10.3.5.9``` for personal choice, but I limited the amount of users on the network to ```91```. Since the networks netmask is ```/24```, or ```255.255.255.0```, that means we could have up to 255 IP addresses, including the router.  I limited the ammount of IP addresses for DHCP to handout, because later I am going to set up a load balancer for my cluster that will deploy services for applications on the rest of the IP's.
 
-## setting up the nodes <div id="setup-network"></div>
+## Setting up the nodes <div id="setup-nodes"></div>
 I set up one node initially on a small 10GB drive and then I used it to make a disk image, which I used to flash all the other nodes
 
 In order to flash a Raspberry Pi, I like to use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/). I know on the site it says it's for the Pi OS but it has ubuntu built in which is perfect for us.
 
-### On Raspberry Pi Imager
+### On Raspberry Pi Imager <div id="on-pi-imager"></div>
 - select Ubuntu Server 20.04 64 bit
 - select the disk you want to flash
 - press ```ctrl+shift+x ``` for extra settings to pop up
@@ -84,8 +102,8 @@ Since I'm using my own local project router I can go into the new router address
   
 I use Visual Studio Code for SSH. Its really simple and nice to use. I installed an ssh extension which allowed me to change my ssh configuration as needed.
 
-### On Visual Studio Code
-**connecting to node**
+### On Visual Studio Code <div id="on-vscode"></div>
+**connecting to node** <div id="connecting-to-node"></div>
 I click the bottom left blue corner to ssh to a connection, or in this case we need to edit the configuration file.
 ```sh
 # ~/.ssh/config
@@ -108,7 +126,7 @@ sudo reboot #restart!
 
 
 
-**configuring template node**
+**configuring template node** <div id="config-template-node"></div>
 some initial setup is necessary for the raspberry pi to be used for kubernetes, and as a server in general. this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> is a great resource to check through that I have been using. I have done some things differently though.
 
 In the case you dont have access to the router follow the tutorial in this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> for network setup
@@ -128,9 +146,7 @@ In the case you dont have access to the router follow the tutorial in this [link
   sudo systemctl status docker
   ```
 
-<p align="right"><a href="#top">top</a></p>
-
-**flashing new nodes**
+**flashing new nodes** <div id="flashing-new-node"></div>
 okay so now we should be good to go cluster-wise, im going to test this later on my new minipc so we will see.
 
 This is the point where I take the SD card out and open [Etcher](https://www.balena.io/etcher/) and plug the sd card into my computer. Etcher lets you fash an sd card from another sd card which is great for what we need. So I bought target brand 64GB sd cards for like \$10 or \$12 each, which probably wasnt necessary because I want to set up a nas for my cluster to use.
@@ -152,7 +168,7 @@ This is the point where I take the SD card out and open [Etcher](https://www.bal
 - set each node static ip on router website for permanent lookup
 
 
-**adding in-cluster routes**
+**adding in-cluster routes** <div id="in-cluster-routes"></div>
 in node1 or whichever node has been designated the master node
 - copy config file and ssh keys to ```~/.ssh```
 - edit config file to add each node
