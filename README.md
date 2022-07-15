@@ -132,7 +132,7 @@ some initial setup is necessary for the raspberry pi to be used for kubernetes, 
 In the case you dont have access to the router follow the tutorial in this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#sources"><sup>1</sup></a> for network setup
 - add ssh key to root user's ```~/.ssh/authorized_keys```
   - I like to do this first so I can ssh to root in VSCode for file editing, however this is bad for security so maybe you shouldn't but its probably fine...
-- [disable IPv6](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#sources"><sup>2</sup></a>
+- [disable IPv6](https://pimylifeup.com/ubuntu-disable-ipv6/) <a href="#sources"><sup>2</sup></a>
 
 - disable ssh by password if you didnt in the rpi imager ```/etc/ssh/sshd_config```
 - add to ```/boot/firmware/cmdline.txt```
