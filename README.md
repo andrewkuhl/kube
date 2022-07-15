@@ -251,6 +251,21 @@ LABEL=system-boot       /boot/firmware  vfat    defaults        0       1
 10.3.5.14:/nas  /nas  auto   auto,nofail,noatime,nolock,intr,tcp,actimeo=1800    0   0
 ```
 
+
+once nas is installed
+```sh
+apt install curl -y
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --disable servicelb --token Donquixote0405 --node-taint CriticalAddonsOnly=true:NoExecute --bind-address 10.3.5.14 --disable-cloud-controller --disable local-storage
+watch kubectl get nodes
+ufw allow ssh
+ufw allow 6443
+ufw enable -y
+ansible workers -b -m shell -a "curl -sfL https://get.k3s.io | K3S_URL=https://10.3.5.14:6443 K3S_TOKEN=Donquixote0405 sh -"
+watch kubectl get nodes
+kubectl label nodes node1 node2 node3 kubernetes.io/role=worker
+kubectl get nodes
+```
+
 ## Sources <div id="sources"></div>
 1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
 2. [How to Disable IPv6 on Ubuntu](https://pimylifeup.com/ubuntu-disable-ipv6/)
