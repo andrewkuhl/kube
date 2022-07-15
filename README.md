@@ -227,6 +227,30 @@ The goal from here is to install a nas on node1 to which I will access from all 
 Setting up the MiniPC has been a little different. Manual installation, no /etc/cloud folder?
 followed [this](https://linuxconfig.org/how-to-disable-ipv6-address-on-ubuntu-20-04-lts-focal-fossa#:~:text=Disabling%20IPv6%20address%20on%20Ubuntu%2020.04%20LTS%20Focal%20Fossa%20step%20by%20step%20instructions&text=In%20case%20you%20need%20to,run%20the%20update%2Dgrub%20command)
 
+Ive set up the nas on the minipc (node4) 
+I had to install
+```sh
+sudo apt install nfs-kernel-server
+sudo mkdir /nas
+```
+and then plug in ssd i format as NTFS so I can access outside cluster
+add this to mount the ssd permanently
+```sh
+# /etc/fstab
+UUID=456CEBF40A795F3E   /nas    ntfs    none    0   0    
+```
+to mount on client 
+```sh
+sudo apt install nfs-common
+sudo mkdir /nas
+```
+add this to mount nfs
+```sh
+LABEL=writable	/	 ext4	defaults	0 1
+LABEL=system-boot       /boot/firmware  vfat    defaults        0       1
+10.3.5.14:/nas  /nas  auto   auto,nofail,noatime,nolock,intr,tcp,actimeo=1800    0   0
+```
+
 ## Sources <div id="sources"></div>
 1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
 2. [How to Disable IPv6 on Ubuntu](https://pimylifeup.com/ubuntu-disable-ipv6/)
