@@ -127,12 +127,12 @@ sudo reboot #restart!
 
 
 **configuring template node** <div id="config-template-node"></div>
-some initial setup is necessary for the raspberry pi to be used for kubernetes, and as a server in general. this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> is a great resource to check through that I have been using. I have done some things differently though.
+some initial setup is necessary for the raspberry pi to be used for kubernetes, and as a server in general. this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#sources"><sup>1</sup></a> is a great resource to check through that I have been using. I have done some things differently though.
 
-In the case you dont have access to the router follow the tutorial in this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>1</sup></a> for network setup
+In the case you dont have access to the router follow the tutorial in this [link](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#sources"><sup>1</sup></a> for network setup
 - add ssh key to root user's ```~/.ssh/authorized_keys```
   - I like to do this first so I can ssh to root in VSCode for file editing, however this is bad for security so maybe you shouldn't but its probably fine...
-- [disable IPv6](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#medium"><sup>2</sup></a>
+- [disable IPv6](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <a href="#sources"><sup>2</sup></a>
 
 - disable ssh by password if you didnt in the rpi imager ```/etc/ssh/sshd_config```
 - add to ```/boot/firmware/cmdline.txt```
@@ -166,7 +166,7 @@ This is the point where I take the SD card out and open [Etcher](https://www.bal
   ```
 - repeat for each node
 - set each node static ip on router website for permanent lookup
-
+![title](images/ports.png)
 
 **adding in-cluster routes** <div id="in-cluster-routes"></div>
 in node1 or whichever node has been designated the master node
@@ -217,12 +217,14 @@ in node1 or whichever node has been designated the master node
   ```
 <p align="right"><a href="#top">top</a></p>
 
-
+At this point you could install kubernetes on node1 and kubernetes client on the rest of them by following the tutorial [here](https://rpi4cluster.com/k3s/k3s-kube-setting/) <a href="#sources"><sup>3</sup></a>.
+However I will be installing ubuntu desktop on the minipc for the added amd core and better kube master.
+The goal from here is to install a nas on node1 to which I will access from all the nodes and my pc. I also want to figure out a vpn to access the network from far away
 
 ## Sources <div id="sources"></div>
-1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56) <div id="medium"></div>
+1. [Installing Kubernetes on Raspberry Pi, K3s and Docker on Ubuntu 20.04](https://medium.com/@amadmalik/installing-kubernetes-on-raspberry-pi-k3s-and-docker-on-ubuntu-20-04-ef51e5e56)
 2. [How to Disable IPv6 on Ubuntu](https://pimylifeup.com/ubuntu-disable-ipv6/)
-   
+3. [rpi4cluster.com](https://rpi4cluster.com/k3s/k3s-kube-setting/)
 
 
 
