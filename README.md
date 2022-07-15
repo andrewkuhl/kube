@@ -158,11 +158,14 @@ This is the point where I take the SD card out and open [Etcher](https://www.bal
   ```
 - add each nodes future static IP address in ```/etc/cloud/templates/debian.hosts.tmpl``` or something
   ```sh
-  127.0.0.1 node# localhost
+  # in my case 
+  127.0.0.1	localhost
+  127.0.1.1	node#
   
-  10.3.5.11 node1 # in my case
+  10.3.5.11 node1 
   10.3.5.12 node2 
   10.3.5.13 node3
+  10.3.5.14 node4
   ```
 - repeat for each node
 - set each node static ip on router website for permanent lookup
