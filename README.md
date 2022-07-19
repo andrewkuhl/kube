@@ -255,7 +255,7 @@ LABEL=system-boot       /boot/firmware  vfat    defaults        0       1
 once nas is installed
 ```sh
 apt install curl -y
-curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --disable servicelb --token Donquixote0405 --node-taint CriticalAddonsOnly=true:NoExecute --bind-address 10.3.5.14 --disable-cloud-controller --disable local-storage
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644 --disable servicelb --token TOKEN --bind-address 10.3.5.14 --disable-cloud-controller --disable local-storage
 watch kubectl get nodes
 ufw allow ssh
 ufw allow 6443
