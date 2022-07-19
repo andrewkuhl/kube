@@ -260,7 +260,7 @@ watch kubectl get nodes
 ufw allow ssh
 ufw allow 6443
 ufw enable -y
-ansible workers -b -m shell -a "curl -sfL https://get.k3s.io | K3S_URL=https://10.3.5.14:6443 K3S_TOKEN=Donquixote0405 sh -"
+ansible workers -b -m shell -a "curl -sfL https://get.k3s.io | K3S_URL=https://10.3.5.14:6443 K3S_TOKEN=TOKEN sh -"
 watch kubectl get nodes
 kubectl label nodes node1 node2 node3 kubernetes.io/role=worker
 kubectl get nodes
